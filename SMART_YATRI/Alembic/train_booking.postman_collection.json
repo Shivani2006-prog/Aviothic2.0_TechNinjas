@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "Train Booking API",
+    "_postman_id": "12345-abcde-67890-fghij",
+    "description": "Collection for Train Booking FastAPI backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Admin Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "username", "value": "admin" },
+            { "key": "password", "value": "admin123" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8000/token",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["token"]
+        }
+      }
+    },
+    {
+      "name": "Trains - List",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/trains",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["trains"]
+        }
+      }
+    },
+    {
+      "name": "Trains - Create",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"T003\",\n  \"name\": \"Express C\",\n  \"origin\": \"Hyderabad\",\n  \"destination\": \"Pune\",\n  \"total_seats\": 180\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/trains",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["trains"]
+        }
+      }
+    },
+    {
+      "name": "Bookings - Create",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": 1,\n  \"train_id\": \"T001\",\n  \"travel_date\": \"2025-10-20\",\n  \"class_type\": \"Sleeper\",\n  \"seats_booked\": 2,\n  \"price\": 1500.0\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/bookings",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["bookings"]
+        }
+      }
+    },
+    {
+      "name": "Admin - Retrain with Default CSV",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/admin/retrain-default",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["admin", "retrain-default"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}

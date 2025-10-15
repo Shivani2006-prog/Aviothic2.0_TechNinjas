@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+*.log
+*.pot
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.env
+docker-compose.override.yml
+docker_fix_log.txt
+docker_reset.sh
+reset_alembic.sh
+entrypoint.sh
+
+# Database files
+*.db
+*.sqlite3
+
+# Alembic
+alembic/versions/*.pyc
+alembic/versions/__pycache__/
+
+# Model artifacts
+model_artifacts/
+ml/__pycache__/
+ml/*.pkl
+ml/*.h5
+ml/*.joblib
+
+# Test output
+test/__pycache__/
+*.tmp
+*.out
+
+# Ignore embedded repositories
+Shivani-AIMASTER/
+.venv/
+*.pyc
+__pycache__/
+.env
+.venv/
+*.pyc
+__pycache__/
+.env

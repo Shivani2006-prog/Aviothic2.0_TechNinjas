@@ -1,0 +1,9 @@
+{
+  "train_id": "T132",
+  "origin": "JU",
+  "destination": "CSTM",
+  "travel_date": "2025-12-11",
+  "booking_date": "2025-08-25",
+  "class_name": "SL",
+  "seats_requested": 1
+}
