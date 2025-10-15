@@ -1,100 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <title>Booking Summary - SMART YATRI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 40px;
-            margin: 0;
-        }
-        .summary-container {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-            width: 900px;
-        }
-        h1 {
-            color: #00ff99;
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            border-bottom: 1px solid #fff;
-            text-align: center;
-        }
-        th {
-            font-weight: bold;
-            color: #00ff99;
-        }
-        tr:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Yatri - Summary</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Vande_Bharat_Express_around_Mumbai.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 800px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      background-color: #6b8de3;
+      color: #1a1a1a;
+      padding: 15px 25px;
+      border-radius: 10px;
+      margin-top: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      font-family: "Georgia", serif;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    label {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #000;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #999;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      background: #eaeaea;
+    }
+
+    input:focus {
+      border-color: #4671d5;
+      background: #fff;
+      box-shadow: 0 0 8px rgba(70, 113, 213, 0.4);
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      background: #3a5ba0;
+      color: #fff;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #264d9b;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      label {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="summary-container">
-        <h1>Booking Summary</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>User ID</th>
-                    <th>Train ID</th>
-                    <th>Origin</th>
-                    <th>Destination</th>
-                    <th>Travel Date</th>
-                    <th>Booking Date</th>
-                    <th>Class</th>
-                    <th>Seats</th>
-                    <th>Fare</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="booking-table-body">
-                <!-- Booking rows will appear here -->
-            </tbody>
-        </table>
-    </div>
+  <div class="container">
+    <h1>Summary</h1>
+    <form>
+      <label for="userId">User Id</label>
+      <input type="text" id="userId" placeholder="Enter your User Id">
 
-    <script>
-        // Fetch all bookings from backend
-        fetch("http://localhost:8000/api/bookings")
-            .then(response => response.json())
-            .then(bookings => {
-                const tbody = document.getElementById("booking-table-body");
-                tbody.innerHTML = ""; // clear any previous rows
-                bookings.forEach(b => {
-                    const row = `
-                        <tr>
-                            <td>${b.id}</td>
-                            <td>${b.user_id}</td>
-                            <td>${b.train_id}</td>
-                            <td>${b.origin}</td>
-                            <td>${b.destination}</td>
-                            <td>${b.travel_date}</td>
-                            <td>${b.booking_date}</td>
-                            <td>${b.class_name}</td>
-                            <td>${b.seats_booked}</td>
-                            <td>₹${b.fare}</td>
-                            <td>${b.status}</td>
-                        </tr>
-                    `;
-                    tbody.insertAdjacentHTML("beforeend", row);
-                });
-            })
-            .catch(err => console.error("Error fetching bookings:", err));
-    </script>
+      <label for="trainId">Train Id</label>
+      <input type="text" id="trainId" placeholder="Enter Train Id">
+
+      <label for="bookingDate">Booking Date</label>
+      <input type="date" id="bookingDate">
+
+      <label for="travelDate">Travel Date</label>
+      <input type="date" id="travelDate">
+
+      <label for="className">Class Name</label>
+      <input type="text" id="className" placeholder="e.g. Sleeper / AC 3-tier">
+
+      <label for="seatsBooked">Seats Booked</label>
+      <input type="number" id="seatsBooked" placeholder="Enter number of seats">
+
+      <button type="submit" class="submit-btn">Show Summary</button>
+    </form>
+  </div>
 </body>
 </html>

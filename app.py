@@ -41,7 +41,7 @@ def logout():
 @app.route('/search', methods=['GET','POST'])
 def search():
     if 'user' not in session:
-        return redirect(url_for('login'))
+        return redirect(url_for('predict'))
 
     trains = []
     if request.method == 'POST':
@@ -61,19 +61,19 @@ def predict(train_no):
 
     train = next((t for t in trains_db if t['train_no']==train_no), None)
     if not train:
-        return redirect(url_for('search'))
+        return redirect(url_for('summary'))
 
     
     return render_template('predict.html', user=session['user'], train=train, prediction=prediction)
 
 # ---------- MY BOOKINGS ----------
-@app.route('/mybookings')
-def mybookings():
+@app.route('/my_bookings')
+def my_bookings():
     if 'user' not in session:
         return redirect(url_for('login'))
 
     user_bookings = [b for b in bookings if b['user']==session['user']]
-    return render_template('mybookings.html', user=session['user'], bookings=user_bookings)
+    return render_template('my_bookings.html', user=session['user'], bookings=user_bookings)
 
 
 # ---------- SUMMARY ----------
