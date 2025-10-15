@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Yatri</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Vande_Bharat_Express_around_Mumbai.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(3px);
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+    }
+
+    .title {
+      font-size: 70px;
+      font-weight: 900;
+      line-height: 1;
+      margin-right: 50px;
+      color: black;
+    }
+
+    .card {
+      background: #eae6f7;
+      padding: 20px 30px;
+      border-radius: 15px;
+      width: 280px;
+      border: 1px solid #aaa;
+    }
+
+    .card h2 {
+      background: #7b73db;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #c4b7f0;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      background: #2c4a7b;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #486eb5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">
+      Smart <br> Yatri
+    </div>
+    <div class="card">
+      <h2>Book Your Tickets</h2>
+      <form action="/search" method="post">
+        <label>From -</label><br>
+        <input type="text" name="from" placeholder="Enter departure station" required><br>
+
+        <label>To -</label><br>
+        <input type="text" name="to" placeholder="Enter destination station" required><br>
+
+        <label>Date -</label><br>
+        <input type="date" name="date" required><br>
+
+        <button type="submit">Search Your Train</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

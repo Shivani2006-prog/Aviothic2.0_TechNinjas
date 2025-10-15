@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Railway Dashboard Login</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Background image */
+    body {
+      background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Vande_Bharat_Express_around_Mumbai.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Login box */
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 50px 40px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Heading */
+    .login-container h2 {
+      color: #3a4f8a;
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .login-container p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    /* Input fields */
+    .login-container input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      background: #d9d9d9;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* Login button */
+    .login-container button {
+      width: 50%;
+      padding: 12px 0;
+      border-radius: 25px;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #55719C;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #3f5778;
+    }
+
+    /* Error message */
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Welcome Back!</h2>
+    <p>Login to access your Railway Dashboard</p>
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Enter username" required>
+      <input type="password" name="password" placeholder="Enter password" required>
+      <button type="submit">Login</button>
+    </form>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+  </div>
+</body>
+</html>

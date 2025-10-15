@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fare Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Vande_Bharat_Express_around_Mumbai.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: rgba(230, 230, 230, 0.9);
+            width: 40%;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            background-color: rgba(100, 100, 255, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            color: #0b0b5e;
+            text-align: center;
+        }
+
+        .form-group {
+            display: inline-block;
+            margin: 10px 20px;
+        }
+
+        select, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #999;
+        }
+
+        button {
+            background-color: #696dc9;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5053a0;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            background-color: #d1d1d1;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .chart-container h2 {
+            color: #4b2e8a;
+        }
+
+        .proceed-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 12px 30px;
+            background-color: #2f4f77;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .proceed-btn:hover {
+            background-color: #1f2f50;
+        }
+
+        /* Placeholder chart */
+        .chart-placeholder {
+            height: 300px;
+            background-color: white;
+            border: 2px solid #2a8ce0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction and Dynamic Fare Trend</h1>
+        
+        <div class="form-group">
+            <label for="from">From</label>
+            <select id="from">
+                <option value="">Select</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="to">To</label>
+            <select id="to">
+                <option value="">Select</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="class">Class</label>
+            <select id="class">
+                <option value="">Select</option>
+                <option value="Sleeper">Sleeper</option>
+                <option value="AC">AC</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button>Predict Fare</button>
+        </div>
+
+        <div class="chart-container">
+            <h2>Dynamic Fare Trend</h2>
+            <div class="chart-placeholder">
+                Chart will appear here
+            </div>
+        </div>
+
+        <button class="proceed-btn">Proceed</button>
+    </div>
+</body>
+</html>
