@@ -1,0 +1,27 @@
+# Core
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-dotenv==1.0.1
+pydantic==2.9.2
+pydantic-settings==2.4.0
+
+# Database
+SQLAlchemy==2.0.32
+psycopg2-binary==2.9.11
+alembic==1.13.2
+
+# Security
+passlib==1.7.4  # Last available 1.7.x version
+
+# ML & Data Science
+numpy==1.26.4
+pandas==2.2.3
+scikit-learn==1.3.0
+joblib==1.3.2
+
+# Utilities
+requests==2.32.3
+tqdm==4.66.4
+
+# Optional (for type hints and reproducibility)
+typing-extensions==4.12.2

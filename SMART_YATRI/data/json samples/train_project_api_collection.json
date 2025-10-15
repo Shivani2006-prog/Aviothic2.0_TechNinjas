@@ -1,0 +1,72 @@
+{
+  "info": {
+    "name": "Train Booking Backend API",
+    "_postman_id": "8a91f6a1-7d7a-4c67-b9b4-56f7f301d9ac",
+    "description": "All API endpoints for Train Booking project with environment variables",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health"
+      }
+    },
+    {
+      "name": "Predict Seat, Fare & Availability",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"train_id\": \"T132\",\n  \"origin\": \"JU\",\n  \"destination\": \"CSTM\",\n  \"travel_date\": \"2025-12-11\",\n  \"booking_date\": \"2025-08-25\",\n  \"class_name\": \"SL\",\n  \"seats_requested\": 1\n}"
+        },
+        "url": "{{base_url}}/predict"
+      }
+    },
+    {
+      "name": "Book Ticket",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"train_id\": \"T132\",\n  \"origin\": \"JU\",\n  \"destination\": \"CSTM\",\n  \"travel_date\": \"2025-12-11\",\n  \"booking_date\": \"2025-08-25\",\n  \"class_name\": \"SL\",\n  \"seats_requested\": 1\n}"
+        },
+        "url": "{{base_url}}/booking"
+      }
+    },
+    {
+      "name": "Get All Bookings",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/bookings"
+      }
+    },
+    {
+      "name": "User Registration",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"admin\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\"\n}"
+        },
+        "url": "{{base_url}}/user/register"
+      }
+    },
+    {
+      "name": "User Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"admin123\"\n}"
+        },
+        "url": "{{base_url}}/user/login"
+      }
+    }
+  ]
+}
