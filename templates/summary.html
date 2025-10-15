@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Summary - SMART YATRI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px;
+            margin: 0;
+        }
+        .summary-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            width: 900px;
+        }
+        h1 {
+            color: #00ff99;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #fff;
+            text-align: center;
+        }
+        th {
+            font-weight: bold;
+            color: #00ff99;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="summary-container">
+        <h1>Booking Summary</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th>Train ID</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Travel Date</th>
+                    <th>Booking Date</th>
+                    <th>Class</th>
+                    <th>Seats</th>
+                    <th>Fare</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="booking-table-body">
+                <!-- Booking rows will appear here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fetch all bookings from backend
+        fetch("http://localhost:8000/api/bookings")
+            .then(response => response.json())
+            .then(bookings => {
+                const tbody = document.getElementById("booking-table-body");
+                tbody.innerHTML = ""; // clear any previous rows
+                bookings.forEach(b => {
+                    const row = `
+                        <tr>
+                            <td>${b.id}</td>
+                            <td>${b.user_id}</td>
+                            <td>${b.train_id}</td>
+                            <td>${b.origin}</td>
+                            <td>${b.destination}</td>
+                            <td>${b.travel_date}</td>
+                            <td>${b.booking_date}</td>
+                            <td>${b.class_name}</td>
+                            <td>${b.seats_booked}</td>
+                            <td>₹${b.fare}</td>
+                            <td>${b.status}</td>
+                        </tr>
+                    `;
+                    tbody.insertAdjacentHTML("beforeend", row);
+                });
+            })
+            .catch(err => console.error("Error fetching bookings:", err));
+    </script>
+</body>
+</html>

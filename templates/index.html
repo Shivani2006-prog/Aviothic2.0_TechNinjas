@@ -3,304 +3,100 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Smart Yatri — Landing</title>
-
-  <!-- optional font (replace/remove if offline) -->
+  <title>Smart Yatri — Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --sidebar-width: 240px;
       --accent:#2f5770;
       --btn-bg:#e6eef3;
       --btn-radius:24px;
-      --white: #fff;
+      --white:#fff;
     }
+    html,body{margin:0;font-family:"Roboto",sans-serif;background:#eadcdc;scroll-behavior:smooth;}
+    .app{display:flex;min-height:100vh;align-items:stretch;flex-direction:column;}
 
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:#eadcdc;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    /* page container */
-    .app {
-      display:flex;
-      min-height:100vh;
-      align-items:stretch;
-      justify-content:flex-start;
-    }
-
-    /* left sidebar */
-    .sidebar {
+    /* Sidebar */
+    .sidebar{
       width:var(--sidebar-width);
-      background: linear-gradient(180deg, #597d94 0%, #4e6f88 100%);
-      padding:18px;
-      box-sizing:border-box;
+      background:linear-gradient(180deg,#597d94 0%,#4e6f88 100%);
+      padding:18px;box-sizing:border-box;
       color:#fff;
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      gap:18px;
+      display:flex;flex-direction:column;gap:18px;
+      position:fixed;left:0;top:0;bottom:0;z-index:10;
     }
 
-    .hamburger{
-      width:36px;
-      height:28px;
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      margin-bottom:6px;
-      cursor:pointer;
-    }
-    .hamburger span{
-      display:block;
-      height:3px;
-      background:rgba(0,0,0,0.25);
-      border-radius:3px;
-    }
+    .search{background:rgba(255,255,255,0.9);border-radius:18px;padding:8px 12px;color:#333;font-size:14px;display:flex;align-items:center;gap:8px;}
+    .search input{border:none;outline:none;font-size:13px;width:100%;background:transparent;}
 
-    .search {
-      background: rgba(255,255,255,0.9);
-      border-radius:18px;
-      padding:8px 12px;
-      color:#333;
-      font-size:14px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      box-shadow:0 1px 0 rgba(0,0,0,0.08) inset;
-    }
-    .search input{
-      border:none;
-      outline:none;
-      font-size:13px;
-      width:100%;
-      background:transparent;
-    }
+    .nav-buttons{display:flex;flex-direction:column;gap:14px;margin-top:8px;flex:1;}
+    .nav-btn{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--btn-bg);color:#1f2b33;border-radius:var(--btn-radius);text-decoration:none;font-weight:600;box-shadow:0 2px 0 rgba(0,0,0,0.05);transition:background 0.3s;}
+    .nav-btn:hover{background:#d7e2eb;}
+    .logout-wrap{margin-top:auto;}
+    .logout-btn{width:100%;display:flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:20px;background:var(--btn-bg);color:#111;font-weight:600;text-decoration:none;}
 
-    .nav-buttons {
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      margin-top:8px;
-      flex:1;
-    }
-
-    .nav-btn {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:12px 16px;
-      background:var(--btn-bg);
-      color:#1f2b33;
-      border-radius:var(--btn-radius);
-      text-decoration:none;
-      font-weight:600;
-      box-shadow: 0 2px 0 rgba(0,0,0,0.05);
-      cursor:pointer;
-      user-select:none;
-    }
-    .nav-btn .icon {
-      width:22px;
-      height:22px;
-      border-radius:50%;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background:transparent;
-      opacity:0.9;
-      font-size:14px;
-    }
-
-    /* bottom logout */
-    .logout-wrap{
-      margin-top:auto;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .logout-btn{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:8px 12px;
-      border-radius:20px;
-      background:var(--btn-bg);
-      color:#111;
-      font-weight:600;
-      text-decoration:none;
-    }
-
-    /* main area with background image and big title */
-    .hero {
-      flex:1;
-      min-height:100vh;
-      background-image: url('train.jpg'); /* replace with your image path */
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      padding:48px;
-      box-sizing:border-box;
-      backdrop-filter: none;
-    }
-
-    /* overlay to slightly dim the bg so text pops */
-    .hero::after{
+    /* Hero Section */
+    .hero{flex:1;min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;padding:48px;margin-left:var(--sidebar-width);}
+    .hero::before{
       content:"";
-      position:absolute;
-      left:0;right:0;top:0;bottom:0;
-      background: rgba(255,255,255,0.35);
-      pointer-events:none;
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      background:url('https://upload.wikimedia.org/wikipedia/commons/5/5a/Vande_Bharat_Express_around_Mumbai.jpg') center/cover no-repeat;
+      filter:blur(6px) brightness(0.6);
+      transform:scale(1.1);z-index:1;
     }
+    .hero-content{position:relative;z-index:2;text-align:center;}
+    .title-box{background:rgba(255,255,255,0.85);padding:30px 60px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.2);}
+    .title{font-family:"Playfair Display";font-weight:900;font-size:100px;line-height:1;color:#000;margin:0;}
+    .tagline{margin-top:18px;font-size:20px;color:#5b3ec5;font-weight:500;}
 
-    .hero-content{
-      position:relative;
-      text-align:center;
-      max-width:880px;
-      width:100%;
-    }
-
-    .title {
-      font-family: "Playfair Display", Georgia, serif;
-      font-weight:900;
-      font-size:140px;
-      line-height:0.9;
-      color:#000;
-      margin:0;
-      letter-spacing: -2px;
-      text-shadow: 3px 3px 0 rgba(0,0,0,0.08);
-    }
-
-    .title .line2{
-      display:block;
-      margin-top:8px;
-    }
-
-    .tagline{
-      margin-top:18px;
-      font-size:20px;
-      text-decoration:underline;
-      color:#5b3ec5;
-      font-weight:500;
-      font-family: "Roboto";
-    }
-
-    /* responsive */
-    @media (max-width:980px){
-      .title{ font-size:84px; }
-      .sidebar{ width:80px; padding:12px; }
-      .nav-btn .text { display:none; }
-      .nav-btn { padding:10px; justify-content:center; }
-      .hero{ padding:24px; }
-    }
-
-    @media (max-width:640px){
-      .app { flex-direction:column; }
-      .sidebar { width:100%; flex-direction:row; gap:8px; align-items:center; padding:10px; }
-      .hero { padding:20px; min-height:60vh; }
-      .title{ font-size:48px; }
-      .tagline{ font-size:16px; }
-    }
+    /* Team Section */
+    .team-section{background:linear-gradient(135deg,#0a2342,#00b4d8);color:white;padding:80px 40px;text-align:center;margin-left:var(--sidebar-width);}
+    .team-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;max-width:1100px;margin:auto;}
+    .team-card{background:rgba(255,255,255,0.08);border-radius:15px;overflow:hidden;transition:0.3s;cursor:pointer;}
+    .team-card:hover{transform:translateY(-10px);box-shadow:0 10px 25px rgba(0,180,216,0.3);}
+    .team-card img{width:100%;height:260px;object-fit:cover;}
+    .team-info{padding:20px;}
+    .team-info h3{color:#caf0f8;}
+    .team-info p{color:#ade8f4;}
   </style>
 </head>
 <body>
   <div class="app">
-    <aside class="sidebar" role="navigation" aria-label="Left sidebar">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div class="hamburger" onclick="toggleSidebar()" title="Menu">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="search" title="Search">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M21 21l-4.35-4.35" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="11" cy="11" r="6" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <input type="search" placeholder="Search Here" aria-label="Search" />
-        </div>
+    <aside class="sidebar">
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#333" stroke-width="2"/><circle cx="11" cy="11" r="6" stroke="#333" stroke-width="2"/></svg>
+        <input type="search" placeholder="Search Here" />
       </div>
-
-      <nav class="nav-buttons" aria-label="Main actions">
-        <!-- LOGIN: replace href with your login page (e.g. 'login.html' or full URL) -->
-        <a class="nav-btn" id="loginBtn" href="login.html" onclick="redirect(event,'login.html')">
-          <span class="icon">👤</span>
-          <span class="text">Login</span>
-        </a>
-
-        <!-- BOOK YOUR TRAIN: replace book.html -->
-        <a class="nav-btn" id="bookBtn" href="search.html" onclick="redirect(event,'search.html')">
-          <span class="icon">🗓️</span>
-          <span class="text">Search</span>
-        </a>
-
-        <!-- PREDICT: replace predict.html -->
-        <a class="nav-btn" id="predictBtn" href="predict.html" onclick="redirect(event,'predict.html')">
-          <span class="icon">🔮</span>
-          <span class="text">Predict</span>
-        </a>
+      <nav class="nav-buttons">
+        <a class="nav-btn" href="login.html">👤 Login</a>
+        <a class="nav-btn" href="search.html">🔍 Search</a>
+        <a class="nav-btn" href="predict.html">🔮 Predict</a>
+        <a class="nav-btn" href="summary.html">📊 Summary</a>
+        <a class="nav-btn" href="success.html">✅ Success</a>
+        <a class="nav-btn" href="bookings.html">📘 My Bookings</a>
       </nav>
-
-      <div class="logout-wrap">
-        <a class="logout-btn" id="logoutBtn" href="logout.html" onclick="redirect(event,'logout.html')" title="Logout">
-          ⏻ Logout
-        </a>
-      </div>
+      <div class="logout-wrap"><a class="logout-btn" href="#">⏻ Logout</a></div>
     </aside>
 
-    <main class="hero" role="main" aria-label="Main hero">
+    <main class="hero">
       <div class="hero-content">
-        <h1 class="title">Smart<span class="line2">Yatri</span></h1>
-        <div class="tagline">Safe|Secure|Joyful</div>
+        <div class="title-box">
+          <h1 class="title">Smart Yatri</h1>
+        </div>
+        <div class="tagline">Safe | Secure | Joyful</div>
       </div>
     </main>
+
+    <section class="team-section">
+      <h1>Meet Our Smart Yatri Team</h1>
+      <div class="team-container">
+        <div class="team-card"><img src="images/shivani.jpg"><div class="team-info"><h3>Shivani Tripathi</h3><p>Frontend Developer</p></div></div>
+        <div class="team-card"><img src="images/Vanshika.jpg"><div class="team-info"><h3>Vanshika Shukla</h3><p>UI/UX Designer</p></div></div>
+        <div class="team-card"><img src="images/abhay.JPG"><div class="team-info"><h3>Abhay Tripathi</h3><p>Backend Developer</p></div></div>
+        <div class="team-card"><img src="images/ankita.jpg"><div class="team-info"><h3>Ankita Sharma</h3><p>Data Analyst</p></div></div>
+      </div>
+    </section>
   </div>
-
-  <script>
-    // Toggle (visual) - simple example for hamburger
-    function toggleSidebar(){
-      const sb = document.querySelector('.sidebar');
-      sb.classList.toggle('collapsed');
-      // optionally shrink sidebar by toggling width style
-      if(sb.style.width === '80px') sb.style.width = '';
-      else sb.style.width = '80px';
-    }
-
-    // redirect helper: prevents default and sets location (works on touch too)
-    function redirect(e, href){
-      // If href is '#', do nothing. Otherwise navigate.
-      if(!href || href === '#') {
-        e && e.preventDefault();
-        return;
-      }
-      // Use location.assign to navigate (keeps history)
-      // NOTE: replace the href strings above with your actual page URLs.
-      // Example: redirect to a server route: '/auth/login' or 'https://yourexample.com/login'
-      e && e.preventDefault();
-      window.location.assign(href);
-    }
-
-    // make whole nav button clickable on touch (some devices)
-    document.querySelectorAll('.nav-btn, .logout-btn').forEach(el=>{
-      el.addEventListener('touchstart', function(){ /* no-op to ensure touch feedback */ }, {passive:true});
-    });
-
-    // keyboard accessibility: Enter to activate links
-    document.querySelectorAll('.nav-btn, .logout-btn').forEach(el=>{
-      el.addEventListener('keydown', function(ev){
-        if(ev.key === 'Enter' || ev.key === ' ') {
-          ev.preventDefault();
-          const href = el.getAttribute('href') || '#';
-          redirect(ev, href);
-        }
-      });
-    });
-  </script>
 </body>
 </html>

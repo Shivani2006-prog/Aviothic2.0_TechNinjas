@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .success-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 400px;
+        }
+        h1 {
+            color: #00ff99;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px 5px;
+            border-bottom: 1px solid #fff;
+        }
+        .label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <h1>Booking Confirmed!</h1>
+        <table>
+            <tr><td class="label">Booking ID:</td><td id="booking-id"></td></tr>
+            <tr><td class="label">User ID:</td><td id="user-id"></td></tr>
+            <tr><td class="label">Train ID:</td><td id="train-id"></td></tr>
+            <tr><td class="label">Origin:</td><td id="origin"></td></tr>
+            <tr><td class="label">Destination:</td><td id="destination"></td></tr>
+            <tr><td class="label">Travel Date:</td><td id="travel-date"></td></tr>
+            <tr><td class="label">Booking Date:</td><td id="booking-date"></td></tr>
+            <tr><td class="label">Class:</td><td id="class-name"></td></tr>
+            <tr><td class="label">Seats Booked:</td><td id="seats-booked"></td></tr>
+            <tr><td class="label">Fare:</td><td id="fare"></td></tr>
+            <tr><td class="label">Status:</td><td id="status"></td></tr>
+            <tr><td class="label">Cancellation Time:</td><td id="cancellation-time"></td></tr>
+        </table>
+    </div>
+
+    <script>
+        // Example: receive data from backend
+        const booking = {
+            id: 123,
+            user_id: 45,
+            train_id: "12345A",
+            origin: "Delhi",
+            destination: "Mumbai",
+            travel_date: "2025-10-20",
+            booking_date: "2025-10-15",
+            class_name: "AC 2 Tier",
+            seats_booked: 2,
+            fare: 4500.00,
+            status: "Confirmed",
+            cancellation_time: null
+        };
+
+        // Fill HTML table with booking data
+        document.getElementById("booking-id").innerText = booking.id;
+        document.getElementById("user-id").innerText = booking.user_id;
+        document.getElementById("train-id").innerText = booking.train_id;
+        document.getElementById("origin").innerText = booking.origin;
+        document.getElementById("destination").innerText = booking.destination;
+        document.getElementById("travel-date").innerText = booking.travel_date;
+        document.getElementById("booking-date").innerText = booking.booking_date;
+        document.getElementById("class-name").innerText = booking.class_name;
+        document.getElementById("seats-booked").innerText = booking.seats_booked;
+        document.getElementById("fare").innerText = "₹ " + booking.fare;
+        document.getElementById("status").innerText = booking.status;
+        document.getElementById("cancellation-time").innerText = booking.cancellation_time || "-";
+    </script>
+</body>
+</html>

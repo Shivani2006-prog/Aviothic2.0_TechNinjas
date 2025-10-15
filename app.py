@@ -75,17 +75,6 @@ def mybookings():
     user_bookings = [b for b in bookings if b['user']==session['user']]
     return render_template('mybookings.html', user=session['user'], bookings=user_bookings)
 
-# ---------- FARE TREND ----------
-@app.route('/faretrend')
-def faretrend():
-    if 'user' not in session:
-        return redirect(url_for('login'))
-
-    trends = [
-        {"train_no": "12345", "fare": "₹1200"},
-        {"train_no": "67890", "fare": "₹1300"}
-    ]
-    return render_template('faretrend.html', user=session['user'], trends=trends)
 
 # ---------- SUMMARY ----------
 @app.route('/summary')
