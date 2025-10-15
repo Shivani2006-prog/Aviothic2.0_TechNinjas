@@ -35,8 +35,9 @@ Along with this, it offers **secure ticket booking**, **booking history tracking
 
 ### 💻 Frontend
 - HTML  
-- CSS  
-- Figma  
+- CSS
+- Python Flask
+- Figma
 
 ### ⚙️ Backend
 - FastAPI  
